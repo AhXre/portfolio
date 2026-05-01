@@ -1,0 +1,632 @@
+/* ─── DESIGN TOKENS ─────────────────────────────────── */
+:root {
+  --black: #0a0a0a;
+  --off-black: #111111;
+  --panel: #181818;
+  --white: #f0f0f0;
+  --muted: #888;
+  --bay-blue: #4a90d9;
+  --bay-glow: #4a90d933;
+  --bay-dim: #2a5a90;
+  --grid-color: #1e1e1e;
+  --pixel: 2px;
+}
+
+/*  utilities */
+
+.hidden {
+  display: none;
+}
+
+/* ─── RESET ─────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── BODY ───────────────────────────────────────────── */
+body {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: "Space Mono", monospace;
+  font-size: 14px;
+  line-height: 1.7;
+  min-height: 100vh;
+  /* Dot-grid background — sketch paper feel */
+  background-image: radial-gradient(circle, #252525 1px, transparent 1px);
+  background-size: 24px 24px;
+  overflow-x: hidden;
+}
+
+/* ─── PIXEL BORDER UTILITY ──────────────────────────── */
+/* Hand-drawn pixel border via box-shadow stacking */
+.px-border {
+  box-shadow:
+    -2px 0 0 0 var(--white),
+    2px 0 0 0 var(--white),
+    0 -2px 0 0 var(--white),
+    0 2px 0 0 var(--white),
+    -2px -2px 0 0 var(--black),
+    2px -2px 0 0 var(--black),
+    -2px 2px 0 0 var(--black),
+    2px 2px 0 0 var(--black);
+}
+
+.px-border-blue {
+  box-shadow:
+    -2px 0 0 0 var(--bay-blue),
+    2px 0 0 0 var(--bay-blue),
+    0 -2px 0 0 var(--bay-blue),
+    0 2px 0 0 var(--bay-blue),
+    -2px -2px 0 0 var(--black),
+    2px -2px 0 0 var(--black),
+    -2px 2px 0 0 var(--black),
+    2px 2px 0 0 var(--black),
+    0 0 24px 2px var(--bay-glow);
+}
+
+/* ─── PIXEL TEXT (display headings) ─────────────────── */
+.font-pixel {
+  font-family: "Press Start 2P", monospace;
+}
+.font-sketch {
+  font-family: "Caveat", cursive;
+}
+.font-mono {
+  font-family: "Space Mono", monospace;
+}
+
+/* ─── NAV ─────────────────────────────────────────────── */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+  border-bottom: 2px solid #222;
+  position: sticky;
+  top: 0;
+  background: var(--black);
+  z-index: 100;
+}
+
+.logo {
+  font-family: "Press Start 2P", monospace;
+  font-size: 11px;
+  color: var(--bay-blue);
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0 var(--bay-dim);
+  image-rendering: pixelated;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-family: "Space Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.15s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--bay-blue);
+  transition: width 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--white);
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ─── HERO ─────────────────────────────────────────────── */
+.hero {
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sketch corner deco (SVG inline) */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  width: 280px;
+  height: 280px;
+  border: 2px dashed #2a2a2a;
+  border-radius: 50%;
+  animation: spin 30s linear infinite;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 60px;
+  right: 80px;
+  width: 240px;
+  height: 240px;
+  border: 1px dashed #333;
+  border-radius: 50%;
+  animation: spin 20s linear infinite reverse;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.eyebrow {
+  font-family: "Caveat", cursive;
+  font-size: 22px;
+  color: var(--bay-blue);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 2px;
+  background: var(--bay-blue);
+  image-rendering: pixelated;
+  box-shadow: 4px 0 0 var(--bay-blue);
+}
+
+h1 {
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(20px, 3.5vw, 42px);
+  line-height: 1.6;
+  color: var(--white);
+  text-shadow: 4px 4px 0 #1a1a1a;
+  max-width: 700px;
+  margin-bottom: 2rem;
+}
+
+h1 span {
+  color: var(--bay-blue);
+  text-shadow: 4px 4px 0 var(--bay-dim);
+}
+
+.hero-sub {
+  font-family: "Caveat", cursive;
+  font-size: 22px;
+  color: var(--muted);
+  max-width: 480px;
+  margin-bottom: 3rem;
+}
+
+/* ─── BUTTONS ─────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Press Start 2P", monospace;
+  font-size: 10px;
+  padding: 14px 24px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition:
+    transform 0.1s,
+    box-shadow 0.1s;
+  image-rendering: pixelated;
+  letter-spacing: 1px;
+}
+
+.btn:active {
+  transform: translate(2px, 2px);
+}
+
+.btn-primary {
+  background: var(--bay-blue);
+  color: var(--black);
+  box-shadow: 4px 4px 0 var(--bay-dim);
+}
+
+.btn-primary:hover {
+  box-shadow: 6px 6px 0 var(--bay-dim);
+  transform: translate(-1px, -1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  box-shadow:
+    4px 4px 0 #333,
+    inset 0 0 0 2px var(--white);
+}
+
+.btn-outline:hover {
+  color: var(--bay-blue);
+  box-shadow:
+    4px 4px 0 var(--bay-dim),
+    inset 0 0 0 2px var(--bay-blue);
+  transform: translate(-1px, -1px);
+}
+
+.btn-group {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* ─── SECTION WRAPPER ─────────────────────────────────── */
+section {
+  padding: 5rem 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: "Press Start 2P", monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--bay-blue);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--bay-blue), transparent);
+  max-width: 200px;
+}
+
+h2 {
+  font-family: "Caveat", cursive;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: var(--white);
+}
+
+/* ─── WORK GRID ───────────────────────────────────────── */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2px;
+}
+
+.work-card {
+  background: var(--panel);
+  padding: 2rem;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+  border: 2px solid #1e1e1e;
+}
+
+.work-card:hover {
+  background: #1c1c1c;
+  border-color: var(--bay-blue);
+  box-shadow: 0 0 20px var(--bay-glow);
+}
+
+/* Pixel corner decorations on cards */
+.work-card::before,
+.work-card::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: var(--bay-blue);
+  border-style: solid;
+}
+
+.work-card::before {
+  top: 8px;
+  left: 8px;
+  border-width: 2px 0 0 2px;
+}
+
+.work-card::after {
+  bottom: 8px;
+  right: 8px;
+  border-width: 0 2px 2px 0;
+}
+
+/* Pixel image placeholder */
+.card-img {
+  width: 100%;
+  height: 160px;
+  background: var(--off-black);
+  margin-bottom: 1.5rem;
+  image-rendering: pixelated;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Procedural pixel art pattern on hover */
+.card-img canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  opacity: 0.6;
+}
+
+.card-tag {
+  font-family: "Press Start 2P", monospace;
+  font-size: 7px;
+  color: var(--bay-blue);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.card-title {
+  font-family: "Caveat", cursive;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.card-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ─── STYLE GUIDE SECTION ────────────────────────────── */
+.guide-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.guide-block {
+}
+
+.guide-title {
+  font-family: "Press Start 2P", monospace;
+  font-size: 8px;
+  color: var(--bay-blue);
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed #333;
+}
+
+/* Color swatches */
+.swatch-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.swatch {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 4px;
+  image-rendering: pixelated;
+}
+
+.swatch-label {
+  font-family: "Press Start 2P", monospace;
+  font-size: 6px;
+  margin-top: 6px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Type specimens */
+.type-specimen {
+  margin-bottom: 1.5rem;
+}
+.type-meta {
+  font-size: 10px;
+  color: var(--muted);
+  font-family: "Space Mono", monospace;
+  margin-bottom: 4px;
+}
+
+/* ─── ABOUT / CONTACT ────────────────────────────────── */
+.about-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.sketch-avatar {
+  aspect-ratio: 1;
+  background: var(--panel);
+  border: 2px solid #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Caveat", cursive;
+  font-size: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sketch hatch lines on avatar */
+.sketch-avatar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 6px,
+    #1a1a1a 6px,
+    #1a1a1a 7px
+  );
+}
+
+.about-text p {
+  color: var(--muted);
+  margin-bottom: 1rem;
+  font-size: 13px;
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1.5rem;
+}
+
+.skill-pill {
+  font-family: "Press Start 2P", monospace;
+  font-size: 7px;
+  color: var(--bay-blue);
+  border: 1px solid var(--bay-dim);
+  padding: 6px 12px;
+  background: var(--bay-glow);
+  letter-spacing: 1px;
+}
+
+/* ─── FOOTER ─────────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 3rem;
+  border-top: 1px dashed #222;
+}
+
+footer .pixel-heart {
+  display: inline-block;
+  color: var(--bay-blue);
+  font-family: "Press Start 2P", monospace;
+  font-size: 10px;
+  animation: pulse 1.5s steps(1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+footer p {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 0.5rem;
+  font-family: "Space Mono", monospace;
+}
+
+/* ─── DIVIDER ─────────────────────────────────────────── */
+.divider {
+  width: 100%;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--bay-blue) 0px,
+    var(--bay-blue) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+  opacity: 0.3;
+  margin: 0;
+}
+
+/* ─── SKETCH UNDERLINE ─────────────────────────────── */
+.sketch-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.sketch-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: -4px;
+  right: -4px;
+  height: 3px;
+  background: var(--bay-blue);
+  transform: rotate(-0.5deg) scaleX(1.05);
+  opacity: 0.7;
+}
+
+/* ─── CURSOR ──────────────────────────────────────────── */
+body {
+  cursor: crosshair;
+}
+a,
+button {
+  cursor: crosshair;
+}
+
+/* ─── SCROLLBAR ───────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bay-dim);
+}
+
+/* ─── SELECTION ───────────────────────────────────────── */
+::selection {
+  background: var(--bay-blue);
+  color: var(--black);
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 700px) {
+  nav {
+    padding: 1rem 1.5rem;
+  }
+  .hero {
+    padding: 3rem 1.5rem;
+  }
+  section {
+    padding: 3rem 1.5rem;
+  }
+  h1 {
+    font-size: 18px;
+  }
+  .guide-grid,
+  .about-wrap {
+    grid-template-columns: 1fr;
+  }
+}
