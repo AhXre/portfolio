@@ -540,6 +540,99 @@ h2 {
   letter-spacing: 1px;
 }
 
+/* ─── CONTACT SECTION ───────────────────────────────── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.contact-card {
+  background: var(--panel);
+  border: 2px solid #1e1e1e;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.contact-card:hover {
+  border-color: var(--bay-blue);
+  background: #1c1c1c;
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px var(--bay-glow);
+}
+
+.contact-card::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 6px;
+  height: 6px;
+  border-top: 2px solid var(--bay-blue);
+  border-left: 2px solid var(--bay-blue);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.contact-card:hover::before {
+  opacity: 1;
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--off-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Press Start 2P", monospace;
+  font-size: 14px;
+  color: var(--bay-blue);
+  border: 1px solid #222;
+  flex-shrink: 0;
+}
+
+.contact-icon svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.contact-card:hover .contact-icon {
+  border-color: var(--bay-blue);
+  background: var(--bay-glow);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-type {
+  font-family: "Press Start 2P", monospace;
+  font-size: 8px;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+
+.contact-value {
+  font-family: "Space Mono", monospace;
+  font-size: 13px;
+  color: var(--white);
+  word-break: break-all;
+}
+
+.contact-card:hover .contact-type {
+  color: var(--bay-blue);
+}
+
 /* ─── FOOTER ─────────────────────────────────────────── */
 footer {
   text-align: center;
