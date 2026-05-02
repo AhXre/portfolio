@@ -12,7 +12,7 @@
 
 <!-- ─── ENTRY ANIMATION OVERLAY ──────────── -->
 <div id="entry-overlay">
-  <div id="name-reveal">Fredy</div>
+  <div id="name-reveal">Fredy Esteban</div>
   <div id="pixel-grid-container">
     <div id="pixel-grid"></div>
   </div>
@@ -35,11 +35,11 @@
 
 <!-- ─── NAV ─────────────────────────────── -->
 <nav>
-  <div class="logo">[ PORTFOLIO ]</div>
+  <div class="logo">[ FREDY.DEV ]</div>
   <ul class="nav-links">
     <li><a href="#work">work</a></li>
     <li><a href="#about">about</a></li>
-    <li><a href="#">contact</a></li>
+    <li><a href="mailto:ffrreeddyyes@gmail.com">contact</a></li>
   </ul>
   <button id="menu-toggle" aria-label="Toggle menu">
     <span class="bar"></span>
@@ -63,29 +63,30 @@
   <h2>What I've <span class="sketch-underline">made</span></h2>
 
   <div class="work-grid">
-    <div class="work-card">
+    <div class="work-card" onclick="window.open('https://github.com/cuybyter-alt/CanchaAppWeb', '_blank')">
       <div class="card-img">
         <canvas id="c1" width="48" height="24"></canvas>
       </div>
-      <div class="card-tag">UI / INTERACTION</div>
-      <div class="card-title">Pixel Dashboard</div>
-      <p class="card-desc">A retro-flavored analytics interface built with raw canvas and love.</p>
+      <div class="card-tag">PYTHON / DJANGO</div>
+      <div class="card-title">Reserva Canchas</div>
+      <p class="card-desc">SaaS platform for soccer field reservations. Automated availability and user management with REST APIs.</p>
     </div>
-    <div class="work-card">
+
+    <div class="work-card" onclick="window.open('https://github.com/maxskaink/EventManager', '_blank')">
       <div class="card-img">
         <canvas id="c2" width="48" height="24"></canvas>
       </div>
-      <div class="card-tag">BRANDING</div>
-      <div class="card-title">Sketch Identity</div>
-      <p class="card-desc">Visual identity system for a studio that refuses to look corporate.</p>
+      <div class="card-tag">NODE.JS / MONGODB</div>
+      <div class="card-title">Event Manager</div>
+      <p class="card-desc">University event forum with custom authentication workflows and RESTful service integration.</p>
     </div>
-    <div class="work-card">
+    <div class="work-card" onclick="window.open('https://github.com/Whouaaass/lsd_requerimiento_2', '_blank')">
       <div class="card-img">
         <canvas id="c3" width="48" height="24"></canvas>
       </div>
-      <div class="card-tag">CREATIVE DEV</div>
-      <div class="card-title">Generative Canvas</div>
-      <p class="card-desc">Procedural art tool — every reload, a new piece. Always surprising.</p>
+      <div class="card-tag">gRPC / DOCKER</div>
+      <div class="card-title">Distributed Player</div>
+      <p class="card-desc">High-availability distributed music system using microservices and data synchronization patterns.</p>
     </div>
   </div>
 </section>
@@ -190,16 +191,30 @@
   <h2>The <span class="sketch-underline">person</span> behind it</h2>
 
   <div class="about-wrap">
-    <div class="sketch-avatar">✏️</div>
+    <div class="sketch-avatar">
+        <img src="assets/person-image.png" alt="person-image" />
+    </div>
     <div class="about-text">
-      <p>Hi! I'm a creative developer and designer. I like to build things that feel handmade — rough around the edges in just the right way.</p>
-      <p>My work lives at the intersection of code and craft. I believe good design should feel like it was drawn, not generated.</p>
-      <p>When I'm not pushing pixels, I'm probably sketching in a notebook or tweaking a side project at 2am.</p>
+      <p>I'm a Software Engineer Junior specializing in <strong>backend development</strong>, <strong>API integration</strong>, and <strong>process automation</strong>. I'm passionate about building scalable solutions and applying AI to business operations.</p>
+      
+      <p>Currently in my final year of Computer Science at Universidad del Cauca, I've spent the last 2 years building industry solutions at <strong>ITOESTE</strong>, ranging from automotive logistics apps to automated administrative platforms.</p>
+
+      <div class="section-label" style="margin-top:2rem; font-size: 8px;">Experience</div>
+      <p><strong>Fullstack Developer @ ITOESTE (2023 - Present)</strong><br>
+      Integrating REST APIs for inventory systems, building gym backends, and developing real-time logistics apps with Spring Boot and React.</p>
+
+      <div class="section-label" style="margin-top:2rem; font-size: 8px;">Education</div>
+      <p><strong>Universidad del Cauca (2021 - 2026)</strong><br>
+      B.Eng in Computer Science. Focus on architecture and distributed systems.</p>
+
       <div class="skill-list">
-        <span class="skill-pill">CREATIVE DEV</span>
-        <span class="skill-pill">UI DESIGN</span>
-        <span class="skill-pill">ANIMATION</span>
-        <span class="skill-pill">BRANDING</span>
+        <span class="skill-pill">PYTHON / DJANGO</span>
+        <span class="skill-pill">NODE.JS</span>
+        <span class="skill-pill">SPRING BOOT</span>
+        <span class="skill-pill">APIs / WEBHOOKS</span>
+        <span class="skill-pill">POSTGRESQL</span>
+        <span class="skill-pill">LLMs / IA</span>
+        <span class="skill-pill">GIT</span>
       </div>
     </div>
   </div>
