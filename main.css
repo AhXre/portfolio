@@ -98,12 +98,18 @@ nav {
   z-index: 100;
   opacity: 0;
   transform: translateY(-100%);
-  transition: opacity 1s ease, transform 1s ease;
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
 }
 
 nav.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+#menu-toggle {
+  display: none;
 }
 
 .logo {
@@ -630,6 +636,47 @@ button {
   nav {
     padding: 1rem 1.5rem;
   }
+
+  #menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .bar {
+    width: 20px;
+    height: 3px;
+    background: var(--bay-blue);
+    image-rendering: pixelated;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: var(--panel);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -4px 0 0 var(--bay-dim);
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links li {
+    margin: 1.5rem 0;
+  }
+
   .hero {
     padding: 3rem 1.5rem;
   }
@@ -672,7 +719,9 @@ button {
   margin-bottom: 1.5rem;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
 }
 
 #name-reveal.visible {
@@ -684,8 +733,14 @@ button {
   margin-top: 3rem;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
+  transition:
+    opacity 1s ease 0.3s,
+    transform 1s ease 0.3s;
   z-index: 20;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 1.5rem;
+  width: 100%;
 }
 
 .reveal-btns.visible {
@@ -763,7 +818,9 @@ button {
 .pixel-cell.active {
   background-color: var(--bay-blue);
   box-shadow: 0 0 4px var(--bay-glow);
-  transition: transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease;
+  transition:
+    transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0.5s ease;
 }
 
 #entry-hint {
@@ -793,6 +850,10 @@ button {
 }
 
 @keyframes bounce {
-  from { transform: translate(-2px, -2px); }
-  to { transform: translate(2px, 2px); }
+  from {
+    transform: translate(-2px, -2px);
+  }
+  to {
+    transform: translate(2px, 2px);
+  }
 }

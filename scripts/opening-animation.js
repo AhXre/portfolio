@@ -46,7 +46,8 @@ document.fonts.ready.then(() => {
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
 
-  const fontSize = 12;
+  // Dynamic font size for better mobile fit
+  const fontSize = window.innerWidth < 480 ? 7 : window.innerWidth < 768 ? 10 : 12;
   ctx.font = `${fontSize}px "Press Start 2P", monospace`;
 
   const textMetrics = ctx.measureText(text);
@@ -90,9 +91,11 @@ document.fonts.ready.then(() => {
   gridContainer.style.gridTemplateColumns = `repeat(${gridCols}, 1fr)`;
   gridContainer.style.gridTemplateRows = `repeat(${gridRows}, 1fr)`;
 
+  // Refined scaling: ensure it fits within 85% of screen width
   const gridWidth = gridCols * 6; // 5px cell + 1px gap
-  if (gridWidth > window.innerWidth * 0.9) {
-    gridContainer.style.transform = `scale(${(window.innerWidth * 0.9) / gridWidth})`;
+  const maxAllowedWidth = window.innerWidth * 0.85;
+  if (gridWidth > maxAllowedWidth) {
+    gridContainer.style.transform = `scale(${maxAllowedWidth / gridWidth})`;
   }
 
   const cellMap = new Map();
@@ -221,5 +224,22 @@ document.fonts.ready.then(() => {
     }
 
     document.body.classList.remove("no-scroll");
+  }
+
+  // Mobile Menu Logic
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
   }
 });
