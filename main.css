@@ -630,3 +630,81 @@ button {
     grid-template-columns: 1fr;
   }
 }
+
+/* ─── ENTRY OVERLAY ──────────────────────────────────── */
+#entry-overlay {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--black);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 2px solid #222;
+}
+
+#name-reveal {
+  font-family: "Caveat", cursive;
+  font-size: 42px;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+#name-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#pixel-grid {
+  display: grid;
+  gap: 1px;
+}
+
+.pixel-cell {
+  width: 5px;
+  height: 5px;
+  background-color: transparent;
+}
+
+.pixel-cell.active {
+  background-color: var(--bay-blue);
+  box-shadow: 0 0 4px var(--bay-glow);
+  transition: transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease;
+}
+
+#entry-hint {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Space Mono", monospace;
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+#entry-hint.visible {
+  opacity: 1;
+}
+
+.hint-icon {
+  font-family: "Press Start 2P", monospace;
+  font-size: 10px;
+  animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translate(-2px, -2px); }
+  to { transform: translate(2px, 2px); }
+}
