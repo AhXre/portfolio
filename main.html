@@ -12,9 +12,13 @@
 
 <!-- ─── ENTRY ANIMATION OVERLAY ──────────── -->
 <div id="entry-overlay">
-  <div id="name-reveal">[ YOUR NAME ]</div>
+  <div id="name-reveal">Fredy</div>
   <div id="pixel-grid-container">
     <div id="pixel-grid"></div>
+  </div>
+  <div id="overlay-btns" class="btn-group reveal-btns">
+    <a href="#" class="btn btn-primary">▶ See my work</a>
+    <a href="#" class="btn btn-outline">→ Get in touch</a>
   </div>
   <div id="entry-hint">
     <span class="hint-icon">↖</span>
@@ -37,10 +41,6 @@
   <div class="eyebrow">currently available for work</div>
   <h1>BUILDING <span>THINGS</span><br>PIXEL BY<br>PIXEL.</h1>
   <p class="hero-sub">Designer & developer obsessed with craft, detail, and the joy of making things with the tools i have.</p>
-  <div class="btn-group">
-    <a href="#" class="btn btn-primary">▶ See my work</a>
-    <a href="#" class="btn btn-outline">→ Get in touch</a>
-  </div>
 </div>
 
 <div class="divider"></div>
@@ -336,10 +336,19 @@
         p.el.style.transform = 'translate(0, 0) rotate(0deg)';
       });
       
-      // Reveal name after animation completes
+      // Reveal name, nav, and dot background after animation completes
       setTimeout(() => {
          const nameReveal = document.getElementById('name-reveal');
          if (nameReveal) nameReveal.classList.add('visible');
+         
+         const nav = document.querySelector('nav');
+         if (nav) nav.classList.add('visible');
+         
+         const overlay = document.getElementById('entry-overlay');
+         if (overlay) overlay.classList.add('transparent-bg');
+
+         const btns = document.getElementById('overlay-btns');
+         if (btns) btns.classList.add('visible');
       }, 1500);
       
       window.removeEventListener('mousemove', onInteract);

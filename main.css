@@ -86,10 +86,20 @@ nav {
   justify-content: space-between;
   padding: 1.5rem 3rem;
   border-bottom: 2px solid #222;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   background: var(--black);
   z-index: 100;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+nav.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .logo {
@@ -644,6 +654,11 @@ button {
   justify-content: center;
   overflow: hidden;
   border-bottom: 2px solid #222;
+  transition: background-color 1.5s ease;
+}
+
+#entry-overlay.transparent-bg {
+  background-color: transparent;
 }
 
 #name-reveal {
@@ -657,6 +672,19 @@ button {
 }
 
 #name-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-btns {
+  margin-top: 3rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
+  z-index: 20;
+}
+
+.reveal-btns.visible {
   opacity: 1;
   transform: translateY(0);
 }
